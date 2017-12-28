@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Hero } from '../hero';
-import { HeroService } from '../services/hero.service';
+import { Pet } from '../pet';
+import { PetService } from '../services/pet.service';
 
 @Component({
   selector: 'app-dashboard',
@@ -8,16 +8,16 @@ import { HeroService } from '../services/hero.service';
   styleUrls: [ './dashboard.component.css' ]
 })
 export class DashboardComponent implements OnInit {
-  heroes: Hero[] = [];
+  pets: Pet[] = [];
 
-  constructor(private heroService: HeroService) { }
+  constructor(private petService: PetService) { }
 
   ngOnInit() {
-    this.getHeroes();
+    this.getPets();
   }
 
-  getHeroes(): void {
-    this.heroService.getHeroes()
-      .subscribe(heroes => this.heroes = heroes.slice(1, 5));
+  getPets(): void {
+    this.petService.getPets()
+      .subscribe(pets => this.pets = pets.slice(1, 5));
   }
 }
